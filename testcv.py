@@ -14,4 +14,5 @@ while True:
         break
     
 capture.release()
+cv.waitkey(1)
 cv.destroyAllWindows()
