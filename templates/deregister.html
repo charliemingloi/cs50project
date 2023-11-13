@@ -1,0 +1,22 @@
+{% extends "layout.html" %} 
+{% block title %} 
+Deregister
+{% endblock %}
+{% block main %}
+<form action="/deregister" method="post">
+    <input autocomplete="off" autofocus id="name" name="name" placeholder="Name" type="text" required>
+    <input autocomplete="off" autofocus id="password" name="password" placeholder="Password" type="text" required>
+    <button type="submit">Next</button>
+</form>
+<a href="/"> Go Back</a>
+{% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %} 
+{% endblock %}
+

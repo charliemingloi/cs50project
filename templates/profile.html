@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+{% block title %} 
+Profile
+{% endblock %} 
+{% block main %}
+<form action="/profile" method="post">
+    <p>Account Name:</p>
+    <input autocomplete="off" autofocus id="name" name="name" placeholder="{{name}}" type="text" readonly>
+
+    <p>Real Name:</p>
+    <input autocomplete="off" autofocus id="real_name" name="real_name" placeholder="{{real_name}}" type="text" readonly required>
+    <input type="hidden" id="original_real_name" value="{{real_name}}">
+
+    <p>Class:</p>
+    <input autocomplete="off" autofocus id="classes" name="classes" placeholder="{{classes}}" type="text" readonly required>
+    <input type="hidden" id="original_classes" value="{{classes}}">
+
+    <p>Student Id:</p>
+    <input autocomplete="off" autofocus id="student_id" name="student_id" placeholder="{{student_id}}" type="text" readonly required>
+    <input type="hidden" id="original_student_id" value="{{student_id}}">
+
+    <p>Car Plate:</p>
+    <input autocomplete="off" autofocus id="car_plate_no" name="car_plate_no" placeholder="{{car_plate_no}}" type="text" readonly required>
+    <input type="hidden" id="original_car_plate_no" value="{{car_plate_no}}">
+
+    <p>Registered Date:</p>
+    <input autocomplete="off" autofocus id="registered_date" name="registered_date" placeholder="{{registered_date}}" type="text" readonly>
+
+    <button type="button" onclick="toggleInputs()"> Edit</button>
+    <button type="submit">Next</button>
+</form>
+\
+<script>
+    function toggleInputs() {
+        var inputs = ['real_name', 'student_id', 'classes', 'car_plate_no'];
+
+        for (var i = 0; i < inputs.length; i++) {
+            var inputElement = document.getElementById(inputs[i]);
+            var originalValue = document.getElementById('original_' + inputs[i]).value;
+
+            if (inputElement.readOnly) {
+                inputElement.readOnly = false;
+            } else {
+                inputElement.readOnly = true;
+                inputElement.value = originalValue;
+            }
+        }
+
+        var buttonText = document.querySelector('button').innerText;
+
+        if (buttonText === 'Edit') {
+            document.querySelector('button').innerText = 'Cancel';
+        } else {
+            document.querySelector('button').innerText = 'Edit';
+        }
+    }
+</script>
+
+<p><a href="/"> Back to Homepage</a></p>
+<p><a href="/deregister"> Deregister</a></p>
+{% endblock %}

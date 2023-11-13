@@ -1,0 +1,21 @@
+{% extends "layout.html" %} 
+{% block title %} 
+Login
+{% endblock %} 
+{% block main %} 
+<form action="/login" method="post">
+    <input autocomplete="off" autofocus id="name" name="name" placeholder="Name" type="text" required>
+    <input autocomplete="off" autofocus id="password" name="password" placeholder="Password" type="text" required>
+    <button type="submit">Next</button>
+</form>
+<a href="/register">Sign Up</a>
+{% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <p>{{ message }} <a href="/forgotpassword">Forgot Password</a></p>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %} 
+{% endblock %}
