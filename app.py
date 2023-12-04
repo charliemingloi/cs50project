@@ -55,7 +55,7 @@ def login():
 
         return redirect("/")
     else:
-        return render_template("login.html")
+        return render_template("random.html")
 
 @app.route("/logout")
 def logout():
@@ -85,7 +85,6 @@ def register():
                 flash('Registered!')
                 session["user_id"] = values
                 return redirect("/")
-
     else:
         return render_template("register.html")
 
