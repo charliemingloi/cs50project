@@ -41,7 +41,7 @@ def login():
     if "user_id" in session:
         return render_template("errorfile.html")
     if request.method == "POST":
-        name = request.form.get("name")
+        name = request.form.get("email")
         password = request.form.get("password")
         if not name or not password:
             flash("Invalid Username/ Invalid Password")
@@ -55,7 +55,7 @@ def login():
 
         return redirect("/")
     else:
-        return render_template("random.html")
+        return render_template("login.html")
 
 @app.route("/logout")
 def logout():
