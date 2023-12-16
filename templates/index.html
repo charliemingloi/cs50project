@@ -1,5 +1,53 @@
 {% extends "layout.html" %}
 {% block title %} Home {% endblock %}
-{% block main %} 
-<p> Hello World {{placeholder}}</p>
+{% block body %} 
+<style>
+    body {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f0f0f0;
+    }
+
+    .box {
+        width: 24.5vw; /* Adjusted width calculation */
+        height: 160px;
+        background-color: #ffffff;
+        border: 1px solid #cccccc;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: Arial, sans-serif;
+    }
+    .data {
+        margin: 10px;
+    }
+</style>
+
+</head>
+<body>
+<!-- Boxes -->
+<div class="box" id="box1">
+    <div class="data">Data 1</div>
+    <div class="data">Data 2</div>
+</div>
+<div class="box" id="box2">Box 2</div>
+<div class="box" id="box3">Box 3</div>
+<div class="box" id="box4">Box 4</div>
+<div class="box" id="box5">Box 5</div>
+<div class="box" id="box6">Box 6</div>
+<div class="box" id="box7">Box 7</div>
+<div class="box" id="box8">Box 8</div>
+<div class="box" id="box9">Box 9</div>
+<div class="box" id="box10">Box 10</div>
+<div class="box" id="box11">Box 11</div>
+<div class="box" id="box12">Box 12</div>
+<div class="box" id="box13">Box 13</div>
+<div class="box" id="box14">Box 14</div>
+<div class="box" id="box15">Box 15</div>
+<div class="box" id="box16">Box 16</div>
+
 {% endblock %}
