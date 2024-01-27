@@ -6,7 +6,7 @@ from helpers import login_required
 import datetime
 import cv2
 import pytesseract
-from mytestfiles import image_to_text
+#from mytestfiles import image_to_text
 
 app = Flask(__name__)
 
@@ -29,12 +29,12 @@ def after_request(response):
 @login_required
 def index():    
     
-    name = image_to_text()
+    name = "SYD 5165"
     users = db.execute("SELECT * FROM user_info WHERE car_plate_no=(?)", name)
     for i in range(len(users)):
         db.execute("INSERT INTO info (id, real_name, CLASS, car_plate_no, date) VALUES (?,?,?,?,?)", users[i]["id"], users[i]["real_name"], users[i]["class"], name, datetime.datetime.now())
 
-    return render_template("index.html", placeholder=image_to_text())
+    return render_template("index.html")
 
 @app.route("/login", methods=["GET", "POST"])
 def login():

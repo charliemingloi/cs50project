@@ -18,7 +18,7 @@ Profile
     <p>Student Id:</p>
     <input autocomplete="off" autofocus id="student_id" name="student_id" placeholder="{{student_id}}" type="text" readonly required>
     <input type="hidden" id="original_student_id" value="{{student_id}}">
-
+ 
     <p>Car Plate:</p>
     <input autocomplete="off" autofocus id="car_plate_no" name="car_plate_no" placeholder="{{car_plate_no}}" type="text" readonly required>
     <input type="hidden" id="original_car_plate_no" value="{{car_plate_no}}">
@@ -29,7 +29,6 @@ Profile
     <button type="button" onclick="toggleInputs()"> Edit</button>
     <button type="submit">Next</button>
 </form>
-\
 <script>
     function toggleInputs() {
         var inputs = ['real_name', 'student_id', 'classes', 'car_plate_no'];
