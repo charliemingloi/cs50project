@@ -3,7 +3,7 @@ import csv
 score_id = {}
 out = {}
 
-with open('test.csv', 'r') as file:
+with open('Yolov8\\test.csv', 'r') as file:
     csv_reader = csv.reader(file)
     
     next(csv_reader)
