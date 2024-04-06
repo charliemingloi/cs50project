@@ -1,5 +1,12 @@
 {% extends "layout.html" %}
 {% block title %} Home {% endblock %}
+{% block div %} 
+    {% if myparse == 0 %}
+        <button type="button" class="btn btn-outline-primary me-2"><a href="/login">Login</a></button>
+    {% else %} 
+        <button type="button" class="btn btn-outline-primary me-2"><a href="/logout">Logout</a></button>
+    {% endif %}
+{% endblock %}
 {% block body %} 
 <style>
     body {

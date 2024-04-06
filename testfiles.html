@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Live Data Display</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .box {
+            width: calc(25% - 20px);
+            margin: 10px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div id="dataContainer"></div>
+
+    <script>
+        function fetchData() {
+            // Mock API endpoint
+            let url = 'https://jsonplaceholder.typicode.com/posts';
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    updateData(data);
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        function updateData(data) {
+            let dataContainer = document.getElementById("dataContainer");
+            dataContainer.innerHTML = "";
+            for (let i = 0; i < Math.min(data.length, 16); i++) {
+                let box = document.createElement("div");
+                box.className = "box";
+                box.textContent = data[i].title;
+                dataContainer.appendChild(box);
+            }
+        }
+
+        // Fetch data and update every second
+        setInterval(fetchData, 1000);
+
+        // Initial fetch
+        fetchData();
+    </script>
+</body>
+</html>

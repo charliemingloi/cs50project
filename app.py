@@ -26,15 +26,18 @@ def after_request(response):
 
 
 @app.route("/")
-@login_required
-def index():    
-    
-    name = "SYD 5165"
-    users = db.execute("SELECT * FROM user_info WHERE car_plate_no=(?)", name)
-    for i in range(len(users)):
-        db.execute("INSERT INTO info (id, real_name, CLASS, car_plate_no, date) VALUES (?,?,?,?,?)", users[i]["id"], users[i]["real_name"], users[i]["class"], name, datetime.datetime.now())
+#@login_required
+def index():
+    try:
+        print(session["user_id"])
+        name = "SYD 5165"
+        users = db.execute("SELECT * FROM user_info WHERE car_plate_no=(?)", name)
+        for i in range(len(users)):
+            db.execute("INSERT INTO info (id, real_name, CLASS, car_plate_no, date) VALUES (?,?,?,?,?)", users[i]["id"], users[i]["real_name"], users[i]["class"], name, datetime.datetime.now())
 
-    return render_template("index.html")
+        return render_template("index.html", myparse=1)
+    except KeyError:
+        return render_template("index.html", myparse=0)
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -129,7 +132,9 @@ def profile():
                 return render_template("profile.html", name=name[0]["username"], real_name= request.form.get("real_name", "Student Name"), registered_date=registered_date[0]["registered_date"], classes = request.form.get("classes", "Class"), student_id = request.form.get("student_id", "Student No") ,car_plate_no = request.form.get("car_plate_no", "Car Plate"))
         elif len(check_length) == 0:
             db.execute("INSERT INTO user_info VALUES(?, ?, ?, ?, ?, ?)", ids, real_name, student_id, classes, car_plate, registered_date[0]["registered_date"])
-        
+
+        if (request.form.get("real_name") == "" or request.form.get("classes") == "" or request.form.get("student_id") == "" or request.form.get("car_plate_no") == ""):
+            return render_template("profile.html")
         return render_template("profile.html", name=name[0]["username"], real_name= request.form.get("real_name", "Student Name"), registered_date=registered_date[0]["registered_date"], classes = request.form.get("classes", "Class"), student_id = request.form.get("student_id", "Student No") ,car_plate_no = request.form.get("car_plate_no", "Car Plate"))
 
         

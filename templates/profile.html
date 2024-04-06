@@ -26,8 +26,9 @@ Profile
     <p>Registered Date:</p>
     <input autocomplete="off" autofocus id="registered_date" name="registered_date" placeholder="{{registered_date}}" type="text" readonly>
 
-    <button type="button" onclick="toggleInputs()"> Edit</button>
-    <button type="submit">Next</button>
+    <button type="button" id="editButton" onclick="toggleInputs()">Edit</button>
+    <button type="submit" id="saveButton" style="display:none;">Save</button>
+    <button type="button" id="cancelButton" style="display:none;" onclick="cancelEdit()">Cancel</button>
 </form>
 <script>
     function toggleInputs() {
@@ -39,19 +40,25 @@ Profile
 
             if (inputElement.readOnly) {
                 inputElement.readOnly = false;
+                inputElement.style.backgroundColor = '#fff'; // Reset background color
             } else {
                 inputElement.readOnly = true;
                 inputElement.value = originalValue;
+                inputElement.style.backgroundColor = '#f0f0f0'; // Change background color to indicate readonly
             }
         }
 
-        var buttonText = document.querySelector('button').innerText;
+        var editButton = document.getElementById('editButton');
+        var saveButton = document.getElementById('saveButton');
+        var cancelButton = document.getElementById('cancelButton');
 
-        if (buttonText === 'Edit') {
-            document.querySelector('button').innerText = 'Cancel';
-        } else {
-            document.querySelector('button').innerText = 'Edit';
-        }
+        editButton.style.display = 'none';
+        saveButton.style.display = 'inline';
+        cancelButton.style.display = 'inline';
+    }
+
+    function cancelEdit() {
+        location.reload();
     }
 </script>
 
