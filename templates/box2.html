@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+{% block title %} Home {% endblock %}
+{% block div %} 
+    {% if myparse == 0 %}
+        <button type="button" class="btn btn-outline-primary me-2"><a href="/login">Login</a></button>
+    {% else %} 
+        <button type="button" class="btn btn-outline-primary me-2"><a href="/logout">Logout</a></button>
+    {% endif %}
+{% endblock %}
+{% block body %} 
+<style>
+    body, html {
+        height: 100%;
+        margin: 0;
+    }
+    .container {
+        display: grid;
+        height: 100vh;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+    }
+    .box {
+        border: 1px solid black;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+</div>
+</body>
+
+{% endblock %}
